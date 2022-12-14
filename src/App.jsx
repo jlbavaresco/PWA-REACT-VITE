@@ -1,35 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '@popperjs/core/dist/cjs/popper.js'
+import 'bootstrap/dist/js/bootstrap.min.js'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import Menu from './componentes/Menu'
+import Home from './componentes/Home'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Predio from './componentes/telas/predio/Predio'
+import Sala from './componentes/telas/sala/Sala'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <h1>Jorge Bavaresco</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <Router>
+      <Menu />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/predios" element={<Predio />} />
+        <Route exact path="/salas" element={<Sala />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
