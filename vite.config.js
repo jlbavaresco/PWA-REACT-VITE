@@ -9,6 +9,9 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
+      injectRegister: "auto",
+      strategies: "generateSW",
+      base: "/",  
       workbox: {
         globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
       },
@@ -17,7 +20,10 @@ export default defineConfig({
         name: "Vite PWA",
         short_name: "VitePWA",
         description: "Reat PWA example using vite-plugin-pwa.",
+        background_color: "#ffffff",
         theme_color: "#ffffff",
+        display: "standalone",
+        start_url: "/",
         icons: [
           {
             src: "android-chrome-192x192.png",
